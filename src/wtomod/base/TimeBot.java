@@ -5,7 +5,12 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Properties;
 
 public class TimeBot extends TelegramLongPollingBot {
 
@@ -19,7 +24,13 @@ public class TimeBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        return "1282448471:AAEI7vJnLBytywumVlIUTKJOd9m9YlrJSvk";
+        try {
+            return Files.readAllLines(Paths.get("./token"), Charset.defaultCharset()).get(0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     @Override
