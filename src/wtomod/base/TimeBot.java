@@ -35,7 +35,7 @@ public class TimeBot extends TelegramLongPollingBot {
 
             SendMessage sendMessage = new SendMessage();
             sendMessage.setChatId(update.getMessage().getChatId().toString());
-            sendMessage.setText(String.format("User name %s", from.getFirstName()));
+            sendMessage.setText(String.format("User name %s", from.getFirstName())); //text comment
 
             try {
                 for (int i = 0; i < 1000; i++) {
